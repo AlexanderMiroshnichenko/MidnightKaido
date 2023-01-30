@@ -19,6 +19,8 @@ public class CarTune : ScriptableObject
     [Header("Wheels")]
     public float radius;
     public float mass;
+    public float frontGrip;
+    public float rearGrip;
 
     [Header("Engine")]
     public float startFriction;

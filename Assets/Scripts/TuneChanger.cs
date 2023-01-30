@@ -50,7 +50,7 @@ public class TuneChanger : MonoBehaviour
         carTune.engineTorqueCoeff = carTuneDefault.engineTorqueCoeff;
 
 
-        for (int i = 0; i < sliderGearBox.Length - 1; i++)
+        for (int i = 0; i < sliderGearBox.Length - 2; i++)
         {
             carTune.gearRatios[i] = carTuneDefault.gearRatios[i];
         }
@@ -88,8 +88,10 @@ public class TuneChanger : MonoBehaviour
         sliderSuspension[7].value = carTune.rearCamber;
         sliderSuspension[8].value = carTune.turnRadius;
 
-        sliderWheels[0].value = carTune.radius;
-        sliderWheels[1].value = carTune.mass;
+        sliderWheels[1].value = carTune.radius;
+        sliderWheels[0].value = carTune.mass;
+        sliderWheels[2].value = carTune.frontGrip;
+        sliderWheels[3].value = carTune.rearGrip;
 
         sliderEngine[0].value = carTune.startFriction;
         sliderEngine[1].value = carTune.frictionCoefficient;
@@ -98,19 +100,23 @@ public class TuneChanger : MonoBehaviour
         sliderEngine[4].value = carTune.maxRPM;
         sliderEngine[5].value = carTune.engineTorqueCoeff;
 
-        for (int i = 0; i < sliderGearBox.Length - 1; i++)
+        for (int i = 0; i < sliderGearBox.Length - 2; i++)
         {
             sliderGearBox[i].value = carTune.gearRatios[i];
         }
-        sliderGearBox[6].value = carTune.shiftTime;
+        sliderGearBox[6].value = carTune.differentialRatio;
+        sliderGearBox[7].value = carTune.shiftTime;
 
         toggleDifferential.isOn = carTune.isLocked;
-        sliderDifferential[0].value = carTune.differentialRatio;
+        
     }
     private void WheelsChange()
     {
-        carTune.radius = sliderWheels[0].value;
-        carTune.mass = sliderWheels[1].value;
+        carTune.radius = sliderWheels[1].value;
+        carTune.mass = sliderWheels[0].value;
+        carTune.frontGrip = sliderWheels[2].value;
+        carTune.rearGrip = sliderWheels[3].value;
+
     }
 
     private void EngineChange()
@@ -125,16 +131,16 @@ public class TuneChanger : MonoBehaviour
 
     private void GearBoxChange()
     {
-       for(int i = 0; i < sliderGearBox.Length-1; i++)
+       for(int i = 0; i < sliderGearBox.Length-2; i++)
         {
             carTune.gearRatios[i] = sliderGearBox[i].value;
         }
-
-        carTune.shiftTime = sliderGearBox[6].value;
+        carTune.differentialRatio = sliderGearBox[6].value;
+        carTune.shiftTime = sliderGearBox[7].value;
     }
     private void DifferentialChange()
     {
         carTune.isLocked = toggleDifferential.isOn;
-        carTune.differentialRatio = sliderDifferential[0].value;
+       
     }
 }

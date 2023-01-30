@@ -62,9 +62,9 @@ public class WheelControllerTFM : MonoBehaviour
     //frictionSettings
     [SerializeField] private float relaxationLenth;
     [SerializeField]
-    private float latCoeff = 1;
+    public float latCoeff = 1;
     [SerializeField]
-    private float longCoeff = 1;
+    public float longCoeff = 1;
 
     [SerializeField]
     private AudioSource audioSource;

@@ -34,15 +34,22 @@ public class TuneApplyer : MonoBehaviour
             w.restLength = carTune.frontRestLength;
             w.suspensionStiffness = carTune.frontSuspensionStiffness;
             w.damperStiffness = carTune.frontDamperStiffnes;
-            w.camber = carTune.frontCamber;
+            w.longCoeff = carTune.frontGrip;
+            w.latCoeff = carTune.frontGrip;
+           
         }
         foreach (WheelControllerTFM w in rearWheels)
         {
             w.restLength = carTune.rearRestLength;
             w.suspensionStiffness = carTune.rearSuspensionStiffness;
-            w.damperStiffness = carTune.rearDamperStiffnes;
-            w.camber = carTune.rearCamber;
+            w.damperStiffness = carTune.rearDamperStiffnes;     
+            w.longCoeff = carTune.rearGrip;
+            w.latCoeff = carTune.rearGrip;
         }
+        frontWheels[0].camber = -carTune.frontCamber;
+        rearWheels[0].camber = -carTune.rearCamber;
+        frontWheels[1].camber = carTune.frontCamber;
+        rearWheels[1].camber = carTune.rearCamber;
     }
 
     private void ApplyWheels()
