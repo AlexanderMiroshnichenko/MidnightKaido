@@ -27,7 +27,6 @@ Material:
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _ENVIRONMENTREFLECTIONS_OFF
-  - _SPECULARHIGHLIGHTS_OFF
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -285,7 +284,7 @@ Material:
     - _SpecSource: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SpecularOcclusionMode: 1
     - _SrcBlend: 5
     - _StencilRef: 0
