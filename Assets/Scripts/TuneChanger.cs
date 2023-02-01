@@ -41,6 +41,8 @@ public class TuneChanger : MonoBehaviour
 
         carTune.radius = carTuneDefault.radius;
         carTune.mass = carTuneDefault.mass;
+        carTune.frontGrip = carTuneDefault.frontGrip;
+        carTune.rearGrip = carTuneDefault.rearGrip;
 
         carTune.startFriction = carTuneDefault.startFriction;
         carTune.frictionCoefficient = carTuneDefault.frictionCoefficient;
