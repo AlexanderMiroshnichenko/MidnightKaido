@@ -20,7 +20,8 @@ public class Controller : MonoBehaviour
     [SerializeField] AntiRollBarComponent antirollBar;
     [SerializeField] Dashboard dashboard;
 
-    private InputManager _inputs;
+  
+    [SerializeField] private InputController _inputController;
 
 
     [SerializeField] KeyCode shiftUpBtn;
@@ -49,10 +50,10 @@ public class Controller : MonoBehaviour
     
     private void Awake()
     {
-        _inputs = new InputManager();
+       
         
-        _inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
-        _inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp(); 
+        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
+        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp(); 
 
 
 
@@ -71,15 +72,7 @@ public class Controller : MonoBehaviour
         antirollBar.InitializeAntirollBar(wheelControllers);
         differential.InitializeDifferential(wheelControllers);
     }
-    private void OnEnable()
-    {
-        _inputs.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _inputs.Disable();
-    }
+  
     private void HandBrake()
     {
         handBrake = true;
@@ -121,10 +114,11 @@ public class Controller : MonoBehaviour
         inputBrakes = Input.GetAxis("Vertical") > 0 ? 0 : Input.GetAxis("Vertical");
         inputSteering = Input.GetAxis("Horizontal");*/
 
-        inputThrottle = _inputs.Gameplay.AccBrakes.ReadValue<float>() < 0 ? 0: _inputs.Gameplay.AccBrakes.ReadValue<float>();
-        inputBrakes = _inputs.Gameplay.AccBrakes.ReadValue<float>() > 0 ? 0 : _inputs.Gameplay.AccBrakes.ReadValue<float>();
-        inputSteering = _inputs.Gameplay.Steering.ReadValue<float>();
-        inputHandBrake = _inputs.Gameplay.HandBrake.ReadValue<float>();
+        inputThrottle = _inputController.inputThrottle;
+        inputBrakes = _inputController.inputBrakes;
+        inputSteering = _inputController.inputSteering;
+        inputHandBrake = _inputController.inputHandBrake;
+
         if (Input.GetKey(clutchBtn))
         {
             clutch = Mathf.Lerp(clutch, 1, Time.deltaTime);
