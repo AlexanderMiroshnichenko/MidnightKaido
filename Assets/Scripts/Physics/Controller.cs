@@ -50,14 +50,6 @@ public class Controller : MonoBehaviour
     
     private void Awake()
     {
-       
-        
-        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
-        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp(); 
-
-
-
-
         rb = transform.root.GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
        
@@ -71,6 +63,8 @@ public class Controller : MonoBehaviour
         dashboard.InitDashboard(rb, 10000f);
         antirollBar.InitializeAntirollBar(wheelControllers);
         differential.InitializeDifferential(wheelControllers);
+        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
+        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp();
     }
   
     private void HandBrake()
@@ -85,8 +79,11 @@ public class Controller : MonoBehaviour
        
             GearBoxShifterSim();
             dashboard.UpdateD(engine.GetRpm());
-        
-        
+        inputThrottle = _inputController.inputThrottle;
+        inputBrakes = _inputController.inputBrakes;
+        inputSteering = _inputController.inputSteering;
+        inputHandBrake = _inputController.inputHandBrake;
+
     }
 
 
@@ -114,10 +111,7 @@ public class Controller : MonoBehaviour
         inputBrakes = Input.GetAxis("Vertical") > 0 ? 0 : Input.GetAxis("Vertical");
         inputSteering = Input.GetAxis("Horizontal");*/
 
-        inputThrottle = _inputController.inputThrottle;
-        inputBrakes = _inputController.inputBrakes;
-        inputSteering = _inputController.inputSteering;
-        inputHandBrake = _inputController.inputHandBrake;
+       
 
         if (Input.GetKey(clutchBtn))
         {

@@ -23,7 +23,7 @@ MonoBehaviour:
   turnRadius: 4
   radius: 0.23
   mass: 15
-  frontGrip: 0.7
+  frontGrip: 1
   rearGrip: 1
   startFriction: 1.19
   frictionCoefficient: 0.04
