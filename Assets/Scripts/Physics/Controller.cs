@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-  
+    private CustomFixedUpdate m_FixedUpdate;
+    [SerializeField] private bool useCustomFixedUpdate;
     [Range(1, 10000)]
     [SerializeField] float frequency;
+
     [SerializeField] Debugger debug;
     [SerializeField] WheelControllerTFM[] wheelControllers;
     [SerializeField] EngineComponent engine;
@@ -52,32 +54,51 @@ public class Controller : MonoBehaviour
     {
         rb = transform.root.GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero;
-       
+
+        if (useCustomFixedUpdate)
+        {
+            frequency = Mathf.Ceil(Mathf.Clamp(frequency, 1, Mathf.Infinity));
+            deltaTime = 1 / frequency;
+            m_FixedUpdate = new CustomFixedUpdate(deltaTime, UpdateAtCustomTimestep);
+        }
+
     }
     private void Start()
     {
+       
+        
+
+        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
+        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp();
+
         engine.InitializeEngine(rb, gearBox);
         steering.InitializeSteering(wheelControllers);
         clutchComponent.InitializeClutch();
-
         dashboard.InitDashboard(rb, 10000f);
         antirollBar.InitializeAntirollBar(wheelControllers);
         differential.InitializeDifferential(wheelControllers);
-        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
-        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp();
+
+
     }
-  
-    private void HandBrake()
+    private void UpdateAtCustomTimestep()
     {
-        handBrake = true;
-        Debug.Log("HAND");
+        //CUSTOM UPDATE RATE IS PROVIDED BY AESTHETIC
+        if (useCustomFixedUpdate)
+        {
+            UpdatePhysics();
+            Debug.Log("!!!");
+        }
     }
+
 
     private void Update()
     {
-       
-       
-            GearBoxShifterSim();
+        if (useCustomFixedUpdate)
+        {
+            m_FixedUpdate.Update(Time.deltaTime);
+        }
+
+        GearBoxShifterSim();
             dashboard.UpdateD(engine.GetRpm());
         inputThrottle = _inputController.inputThrottle;
         inputBrakes = _inputController.inputBrakes;
@@ -92,26 +113,30 @@ public class Controller : MonoBehaviour
     {
         
         
+     
+        if (!useCustomFixedUpdate)
+        {
             InputUpdate();
             UpdateSteering();
             UpdateDownForce();
             deltaTime = Time.fixedDeltaTime;
             UpdatePhysics();
+          
+        }
+        else
+        {
             
-        
-       
-        
+            InputUpdate();
+            UpdateSteering();
+            UpdateDownForce();
+        }
+
+
     }
 
     private void InputUpdate()
     {
-
-
-        /*inputThrottle = Input.GetAxis("Vertical") < 0 ? 0 : Input.GetAxis("Vertical");
-        inputBrakes = Input.GetAxis("Vertical") > 0 ? 0 : Input.GetAxis("Vertical");
-        inputSteering = Input.GetAxis("Horizontal");*/
-
-       
+   
 
         if (Input.GetKey(clutchBtn))
         {
@@ -121,15 +146,8 @@ public class Controller : MonoBehaviour
         {
             clutch = Mathf.Lerp(clutch, 0, Time.deltaTime); ;
         }
-        /*  if (Input.GetKey(handBrakeBtn))
-          {
-
-          }
-          else 
-          {
-              handBrake = false;
-          }*/
-        handBrake = false;
+       
+        
     }
 
     private void UpdatePhysics()

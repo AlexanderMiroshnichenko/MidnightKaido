@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WheelControllerTFM : MonoBehaviour
 {
+
     //common
     private Rigidbody rb;
     private RaycastHit hit;
@@ -40,7 +41,7 @@ public class WheelControllerTFM : MonoBehaviour
     private Vector3 linearVelocity;
     private float angularVelocity;
     private float angularAcceleration;
-   
+
 
     //Target friction method vars
     private float targetAngularVelocity;
@@ -57,7 +58,7 @@ public class WheelControllerTFM : MonoBehaviour
     public float sY;
     private float fX;
     private float fY;
- 
+
 
     //frictionSettings
     [SerializeField] private float relaxationLenth;
@@ -91,9 +92,9 @@ public class WheelControllerTFM : MonoBehaviour
     public void Steering(float angle)
     {
 
-       // steerAngle = angle;
+        // steerAngle = angle;
         steerAngle = Mathf.Lerp(steerAngle, angle, deltaTime * steerTime);
-        transform.localRotation = Quaternion.Euler(0,steerAngle,camber);
+        transform.localRotation = Quaternion.Euler(0, steerAngle, camber);
     }
 
     public void PhysicsUpdate(float dTorque, float bTorque, float dt)
@@ -123,7 +124,7 @@ public class WheelControllerTFM : MonoBehaviour
         deltaTime = dt;
         Raycast();
         ApplyVisuals();
-        
+
         SimpleDownForce();
         if (!wheelHit) { return; }
         GetSuspensionForce();
@@ -133,7 +134,7 @@ public class WheelControllerTFM : MonoBehaviour
         GetSy();
         AddTireForce();
         Debug.Log("??");
-       
+
     }
 
     private void Raycast()
@@ -164,6 +165,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplySuspensionForce()
     {
+        Debug.Log(damperForce);
         rb.AddForceAtPosition((suspensionForce + damperForce) * transform.up, transform.position - (transform.up * currentLength));
         linearVelocity = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
     }
@@ -176,11 +178,11 @@ public class WheelControllerTFM : MonoBehaviour
         angularVelocity = Mathf.Clamp(angularVelocity, -360, 360);
         //brakes
         angularVelocity -= Mathf.Min(Mathf.Abs(angularVelocity), brakeTorque * Mathf.Sign(angularVelocity) / wheelInertia * deltaTime);
-        
+
     }
 
 
-    
+
 
     private void GetSx()
     {
@@ -189,19 +191,19 @@ public class WheelControllerTFM : MonoBehaviour
         targetFrictionTorque = targetAngularAcceleration * wheelInertia;
         maximumFrictionTorque = fZ * wheelRadius * longFrictionCoefficient;
         sX = fZ == 0 ? 0 : targetFrictionTorque / maximumFrictionTorque;
-       
+
     }
 
     private void GetSy()
     {
-        slipAngle = Mathf.Abs(linearVelocity.z) ==0 ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
+        slipAngle = Mathf.Abs(linearVelocity.z) == 0 ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
 
         coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * Time.deltaTime;
-        coeff= Mathf.Clamp(coeff, 0f, 1f);
-        SADyn+= (slipAngle - SADyn) * coeff;
+        coeff = Mathf.Clamp(coeff, 0f, 1f);
+        SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
 
-        sY =SADyn / slipAnglePeak;
+        sY = SADyn / slipAnglePeak;
         // sY += Mathf.Max(sY) - sY * coeff;
     }
 
@@ -215,19 +217,19 @@ public class WheelControllerTFM : MonoBehaviour
         Vector3 forwardForceVectorNormalized = Vector3.ProjectOnPlane(transform.forward, hit.normal).normalized;
         Vector3 sideForceVectorNormalized = Vector3.ProjectOnPlane(transform.right, hit.normal).normalized;
         Vector2 combinedForce = new Vector2(sX, sY);
-        
+
         if (combinedForce.magnitude > 1)
         {
             combinedForce = combinedForce.normalized;
         }
-      //  Debug.Log("Target friction torque " + targetFrictionTorque);
-       // Debug.Log("Max friction torque " + maximumFrictionTorque);
+        //  Debug.Log("Target friction torque " + targetFrictionTorque);
+        // Debug.Log("Max friction torque " + maximumFrictionTorque);
         fX = combinedForce.x * fZ * longCoeff;
         fY = combinedForce.y * fZ * latCoeff;
 
-       
-      
         
+
+
         Vector3 combinedForceNorm = (forwardForceVectorNormalized * fX + sideForceVectorNormalized * fY);
         Debug.DrawRay(hit.point, combinedForceNorm, Color.red);
         rb.AddForceAtPosition(combinedForceNorm, transform.position - (transform.up * (currentLength + wheelRadius)));
@@ -240,10 +242,10 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplyVisuals()
     {
-       
+
         currentAngle += angularVelocity * Mathf.Rad2Deg * Time.deltaTime;
         currentAngle %= 360f;
-       
+
         visualMesh.transform.position = transform.position - transform.up * currentLength;
         visualMesh.transform.localRotation = Quaternion.Euler(currentAngle, steerAngle, 0f);
         visualMeshGLob.transform.localRotation = Quaternion.Euler(0, 0, camber);
@@ -281,7 +283,7 @@ public class WheelControllerTFM : MonoBehaviour
 
 
     public void StartSmoke()
-    {   
+    {
         smoke.Play();
     }
     public void StopSmoke()
@@ -296,5 +298,12 @@ public class WheelControllerTFM : MonoBehaviour
             StartSmoke();
         }
         else StopSmoke();
+    }
+
+    void OnDrawGizmos()
+    {
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position - new Vector3(0, currentLength, 0), wheelRadius);
     }
 }
