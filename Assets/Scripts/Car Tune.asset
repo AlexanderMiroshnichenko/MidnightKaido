@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Car Tune
   m_EditorClassIdentifier: 
   frontRestLength: 0.245
-  frontSuspensionStiffness: 100000
-  frontDamperStiffnes: 2000
+  frontSuspensionStiffness: 200000
+  frontDamperStiffnes: 1000
   frontCamber: 0
   rearRestLength: 0.245
-  rearSuspensionStiffness: 100000
-  rearDamperStiffnes: 2000
+  rearSuspensionStiffness: 200000
+  rearDamperStiffnes: 1000
   rearCamber: 0
   turnRadius: 4
   radius: 0.23
@@ -28,7 +28,7 @@ MonoBehaviour:
   startFriction: 1.19
   frictionCoefficient: 0.04
   engineInertia: 0.2
-  idleRPM: 808.5714
+  idleRPM: 700
   maxRPM: 9500
   engineTorqueCoeff: 2
   gearRatios:

@@ -165,7 +165,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplySuspensionForce()
     {
-        Debug.Log(damperForce);
+       
         rb.AddForceAtPosition((suspensionForce + damperForce) * transform.up, transform.position - (transform.up * currentLength));
         linearVelocity = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
     }
@@ -196,14 +196,15 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void GetSy()
     {
-        slipAngle = Mathf.Abs(linearVelocity.z) == 0 ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
+        slipAngle = Mathf.Abs(linearVelocity.z) < 0.5 ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
 
-        coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * Time.deltaTime;
+        coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * deltaTime;
         coeff = Mathf.Clamp(coeff, 0f, 1f);
         SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
-
-        sY = SADyn / slipAnglePeak;
+        sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
+        // sY = SADyn / slipAnglePeak;
+        sY = Mathf.Clamp(slipAngle / slipAnglePeak,-1,1);
         // sY += Mathf.Max(sY) - sY * coeff;
     }
 
@@ -222,6 +223,7 @@ public class WheelControllerTFM : MonoBehaviour
         {
             combinedForce = combinedForce.normalized;
         }
+       
         //  Debug.Log("Target friction torque " + targetFrictionTorque);
         // Debug.Log("Max friction torque " + maximumFrictionTorque);
         fX = combinedForce.x * fZ * longCoeff;
