@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    internal enum GearBoxType
+    {
+        manual,
+        auto
+    }
+
+    [SerializeField] GearBoxType gearBoxType;
     private CustomFixedUpdate m_FixedUpdate;
     [SerializeField] private bool useCustomFixedUpdate;
     [Range(1, 10000)]
@@ -65,11 +72,13 @@ public class Controller : MonoBehaviour
     }
     private void Start()
     {
-       
-        
 
-        _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
-        _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp();
+
+        if (gearBoxType == GearBoxType.manual)
+        {
+            _inputController._inputs.Gameplay.ShiftDown.performed += contex => gearBox.ChangeGearDown();
+            _inputController._inputs.Gameplay.ShiftUp.performed += contex => gearBox.ChangeGearUp();
+        }
 
         engine.InitializeEngine(rb, gearBox);
         steering.InitializeSteering(wheelControllers);
@@ -98,7 +107,10 @@ public class Controller : MonoBehaviour
             m_FixedUpdate.Update(Time.deltaTime);
         }
 
-        GearBoxShifterSim();
+        if (gearBoxType == GearBoxType.auto)
+        {
+            AutomaticShifter();
+        }
             dashboard.UpdateD(engine.GetRpm());
         inputThrottle = _inputController.inputThrottle;
         inputBrakes = _inputController.inputBrakes;
@@ -217,20 +229,19 @@ public class Controller : MonoBehaviour
         wheelControllers[3].PhysicsUpdate(_driveTorque[1], btR, deltaTime);
     }
 
-   
 
-    private void GearBoxShifterSim()
+
+    private void AutomaticShifter()
     {
-        //ShiftUp
-       /* if (Input.GetKeyDown(shiftUpBtn))
+      
+        if (engine.engineRpm >= engine.engineMaxRpm && gearBox.inGear)
         {
             gearBox.ChangeGearUp();
         }
-        //ShiftDown
-        if (Input.GetKeyDown(shiftDownBtn))
+        if (engine.engineRpm <= 2500 && gearBox.inGear && gearBox.currentGear > 2)
         {
             gearBox.ChangeGearDown();
-        }*/
+        }
     }
 
     public WheelControllerTFM[] GetWheels()

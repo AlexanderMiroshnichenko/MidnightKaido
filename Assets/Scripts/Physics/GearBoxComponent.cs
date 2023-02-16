@@ -10,7 +10,7 @@ public class GearBoxComponent : MonoBehaviour
     public EngineComponent engine;
     public AudioSource blowOff;
     public int currentGear = 1;
-    private bool inGear = true;
+    public bool inGear = true;
     private int nextGear = 1;
 
     public void ChangeGearUp()
