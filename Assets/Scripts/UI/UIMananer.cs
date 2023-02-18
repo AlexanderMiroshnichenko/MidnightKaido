@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class UIMananer : MonoBehaviour
 {
-    [SerializeField] private GameObject carSettings;
+     private GameObject previousElementUI;
     
-    public void OnClickClose(GameObject button)
+    public void SetPreviousElemet(GameObject previousElement)
     {
-        carSettings.SetActive(false);
-        button.SetActive(true);
+        previousElementUI = previousElement;
     }
-    public void OnClickOpen(GameObject button)
+    public void OnClickTransition(GameObject nextElement)
     {
-        carSettings.SetActive(true);
-        button.SetActive(false);
+        HideElement(previousElementUI);
+        ShowElement(nextElement);
     }
+
+    public void HideElement(GameObject element)
+    {
+        element.SetActive(false);
+    }
+
+    public void ShowElement(GameObject element)
+    {
+        element.SetActive(true);
+    }
+
 }

@@ -202,7 +202,7 @@ public class WheelControllerTFM : MonoBehaviour
         coeff = Mathf.Clamp(coeff, 0f, 1f);
         SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
-        sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
+       // sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
         // sY = SADyn / slipAnglePeak;
         sY = Mathf.Clamp(slipAngle / slipAnglePeak,-1,1);
         // sY += Mathf.Max(sY) - sY * coeff;

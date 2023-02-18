@@ -234,11 +234,11 @@ public class Controller : MonoBehaviour
     private void AutomaticShifter()
     {
       
-        if (engine.engineRpm >= engine.engineMaxRpm && gearBox.inGear)
+        if (engine.engineRpm >= 9000 && gearBox.inGear)
         {
             gearBox.ChangeGearUp();
         }
-        if (engine.engineRpm <= 2500 && gearBox.inGear && gearBox.currentGear > 2)
+        if (engine.engineRpm <= 5000 && gearBox.inGear && gearBox.currentGear > 2)
         {
             gearBox.ChangeGearDown();
         }
