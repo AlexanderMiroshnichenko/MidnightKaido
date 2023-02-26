@@ -191,6 +191,7 @@ public class WheelControllerTFM : MonoBehaviour
         targetFrictionTorque = targetAngularAcceleration * wheelInertia;
         maximumFrictionTorque = fZ * wheelRadius * longFrictionCoefficient;
         sX = fZ == 0 ? 0 : targetFrictionTorque / maximumFrictionTorque;
+        sX = Mathf.Clamp(sX, -1, 1);
 
     }
 
@@ -255,7 +256,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplyAudio()
     {
-        if (Mathf.Abs(sY + sX) > slipValueForAudio)
+        if (Mathf.Abs(sY) > slipValueForAudio|| Mathf.Abs(sX) > slipValueForAudio )
             audioSource.volume = Mathf.Clamp(Mathf.Abs(sY + sX), 0, 1);
         else audioSource.volume = 0;
     }

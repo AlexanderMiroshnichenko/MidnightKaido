@@ -13,6 +13,13 @@ public class GamePlayController : MonoBehaviour
         ShowUpState();
         StartRaceState();
     }
+
+    private void OnEnable()
+    {
+        
+    }
+
+
     public void ShowUpState()
     {
         _gamePlayCanvas.SetActive(false);

@@ -52,12 +52,12 @@ public class Dashboard : MonoBehaviour
 
             // speedText.text = Mathf.Round(rb.velocity.magnitude * 3.6f).ToString();
             //angle.text = "Angle: "+Mathf.RoundToInt(Mathf.Abs(wheel.slipAngle)).ToString();
-          /*  if (gearComponent.GetCurrentGear()==1)
-            gear.text = "N";
-            else gear.text = (gearComponent.GetCurrentGear() - 1).ToString();
+            if (gearComponent.GetCurrentGear()==1)
+            gear.text = "GEAR: N";
+            else gear.text = "GEAR: "+(gearComponent.GetCurrentGear() - 1).ToString();
             if (gearComponent.GetCurrentGear() == 0)
-                gear.text = "R";
-            else gear.text = (gearComponent.GetCurrentGear() - 1).ToString();*/
+                gear.text = "GEAR: R";
+           
             
 
         }
