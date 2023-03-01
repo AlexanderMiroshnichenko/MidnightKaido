@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    internal enum GearBoxType
+    public enum GearBoxType
     {
         manual,
         auto
     }
 
-    [SerializeField] GearBoxType gearBoxType;
+    [SerializeField] public GearBoxType gearBoxType;
     private CustomFixedUpdate m_FixedUpdate;
     [SerializeField] private bool useCustomFixedUpdate;
     [Range(1, 10000)]

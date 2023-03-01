@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/garage.unity
     guid: 07e3bd94127a3df4091dd821de2d58e7
   - enabled: 1
-    path: Assets/Scenes/test 3.unity
+    path: Assets/Scenes/Bayshore.unity
     guid: 87f89507a54c6284f890f397cca517ad
   m_configObjects: {}

@@ -27,7 +27,7 @@ public class InputController : MonoBehaviour
 
     [SerializeField] DriveType driveType;
 
-    [SerializeField] private float _steeringSensivity;
+    [SerializeField] public float steeringSensivity;
 
    
 
@@ -72,7 +72,7 @@ public class InputController : MonoBehaviour
     {
         inputThrottle = _inputs.Gameplay.AccBrakes.ReadValue<float>() < 0 ? 0 : _inputs.Gameplay.AccBrakes.ReadValue<float>();
         inputBrakes = _inputs.Gameplay.AccBrakes.ReadValue<float>() > 0 ? 0 : _inputs.Gameplay.AccBrakes.ReadValue<float>();
-        inputSteering = Mathf.Lerp(inputSteering, _inputs.Gameplay.Steering.ReadValue<float>(), _steeringSensivity * Time.deltaTime);
+        inputSteering = Mathf.Lerp(inputSteering, _inputs.Gameplay.Steering.ReadValue<float>(), steeringSensivity * Time.deltaTime);
 
         inputHandBrake = _inputs.Gameplay.HandBrake.ReadValue<float>();
       

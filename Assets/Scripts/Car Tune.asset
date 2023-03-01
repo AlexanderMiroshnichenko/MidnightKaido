@@ -20,7 +20,7 @@ MonoBehaviour:
   rearSuspensionStiffness: 200000
   rearDamperStiffnes: 1000
   rearCamber: 0
-  turnRadius: 4
+  turnRadius: 11
   radius: 0.23
   mass: 15
   frontGrip: 1
