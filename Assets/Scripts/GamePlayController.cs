@@ -8,6 +8,10 @@ public class GamePlayController : MonoBehaviour
     [SerializeField] private GameObject _gamePlayCanvas;
     [SerializeField]  private CameraStateMachine _cameraStateMachine;
 
+    private void Awake()
+    {
+        StopTime();
+    }
     private void Start()
     {
         ShowUpState();
@@ -46,6 +50,17 @@ public class GamePlayController : MonoBehaviour
 
     }
 
-   
+    public void StopTime()
+    {
+        Time.timeScale = 0;
+        AudioListener.volume = 0;
+    }
+    public void StartTime()
+    {
+        Time.timeScale = 1;
+        AudioListener.volume = 1;
+    }
+
+
 
 }
