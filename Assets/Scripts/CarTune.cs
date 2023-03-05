@@ -40,5 +40,13 @@ public class CarTune : ScriptableObject
     public bool isLocked;
     public float differentialRatio;
 
+    [Header("Tune Stages")]
+    public int turboStage;
+    public int engineStage;
+    public int suspensionStage;
+    public int gearBoxStage;
+    public int wheelsStage;
+
+
 
 }

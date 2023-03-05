@@ -41,3 +41,8 @@ MonoBehaviour:
   shiftTime: 0.1
   isLocked: 0
   differentialRatio: 4.1
+  turboStage: 0
+  engineStage: 0
+  suspensionStage: 0
+  gearBoxStage: 0
+  wheelsStage: 0
