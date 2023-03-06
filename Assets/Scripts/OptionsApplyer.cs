@@ -21,6 +21,8 @@ public class OptionsApplyer : MonoBehaviour
 
     public static OptionsApplyer instance;
 
+   
+
     void Awake()
     {
         if (instance != null)
@@ -30,6 +32,8 @@ public class OptionsApplyer : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+
+        
     }
     private void Start()
     {
