@@ -21,7 +21,7 @@ public class TuneApplyer : MonoBehaviour
         ApplyEngine();
         ApplySuspension();
         ApplyWheels();
-        
+
         ApplyGearBox();
         ApplyDifferential();
     }
@@ -36,13 +36,13 @@ public class TuneApplyer : MonoBehaviour
             w.damperStiffness = carTune.frontDamperStiffnes;
             w.longCoeff = carTune.frontGrip;
             w.latCoeff = carTune.frontGrip;
-           
+
         }
         foreach (WheelControllerTFM w in rearWheels)
         {
             w.restLength = carTune.rearRestLength;
             w.suspensionStiffness = carTune.rearSuspensionStiffness;
-            w.damperStiffness = carTune.rearDamperStiffnes;     
+            w.damperStiffness = carTune.rearDamperStiffnes;
             w.longCoeff = carTune.rearGrip;
             w.latCoeff = carTune.rearGrip;
         }

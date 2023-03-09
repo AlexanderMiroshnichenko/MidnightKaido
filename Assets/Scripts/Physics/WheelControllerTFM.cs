@@ -165,7 +165,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplySuspensionForce()
     {
-       
+
         rb.AddForceAtPosition((suspensionForce + damperForce) * transform.up, transform.position - (transform.up * currentLength));
         linearVelocity = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
     }
@@ -203,9 +203,9 @@ public class WheelControllerTFM : MonoBehaviour
         coeff = Mathf.Clamp(coeff, 0f, 1f);
         SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
-       // sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
+        // sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
         // sY = SADyn / slipAnglePeak;
-        sY = Mathf.Clamp(slipAngle / slipAnglePeak,-1,1);
+        sY = Mathf.Clamp(slipAngle / slipAnglePeak, -1, 1);
         // sY += Mathf.Max(sY) - sY * coeff;
     }
 
@@ -224,18 +224,18 @@ public class WheelControllerTFM : MonoBehaviour
         {
             combinedForce = combinedForce.normalized;
         }
-       
+
         //  Debug.Log("Target friction torque " + targetFrictionTorque);
         // Debug.Log("Max friction torque " + maximumFrictionTorque);
         fX = combinedForce.x * fZ * longCoeff;
         fY = combinedForce.y * fZ * latCoeff;
 
-        
+
 
 
         Vector3 combinedForceNorm = (forwardForceVectorNormalized * fX + sideForceVectorNormalized * fY);
         Debug.DrawRay(hit.point, combinedForceNorm, Color.red);
-        rb.AddForceAtPosition(combinedForceNorm, transform.position - (transform.up * (currentLength + wheelRadius)));
+        rb.AddForceAtPosition(combinedForceNorm, hit.point);
     }
 
     public void ApplyAntirollBar(float force)
@@ -256,7 +256,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void ApplyAudio()
     {
-        if (Mathf.Abs(sY) > slipValueForAudio|| Mathf.Abs(sX) > slipValueForAudio )
+        if (Mathf.Abs(sY) > slipValueForAudio || Mathf.Abs(sX) > slipValueForAudio)
             audioSource.volume = Mathf.Clamp(Mathf.Abs(sY + sX), 0, 1);
         else audioSource.volume = 0;
     }
@@ -305,7 +305,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        
+
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position - new Vector3(0, currentLength, 0), wheelRadius);
     }

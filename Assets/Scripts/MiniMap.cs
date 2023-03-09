@@ -16,6 +16,7 @@ public class MiniMap : MonoBehaviour
     private void FixedUpdate()
     {
         m_mapPlayerTransform.localPosition = new Vector3(m_playerTransform.position.x/ m_scaleX + m_offsetX, m_playerTransform.position.z/m_scaleY+m_offsetY, 0);
+       // m_mapPlayerTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, m_playerTransform.rotation.y));
        
     }
 
