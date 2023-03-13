@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Dashboard : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Dashboard : MonoBehaviour
     [SerializeField] private Transform needleTacho;
     [SerializeField] private Transform needleSpeed;
     [SerializeField] private Text speedText;
-    [SerializeField] private Text gear;
+    [SerializeField] private TMP_Text gear;
     [SerializeField] private GearBoxComponent gearComponent;
     private float tachoAngle;
     private float speedAngle;
@@ -53,10 +54,10 @@ public class Dashboard : MonoBehaviour
             // speedText.text = Mathf.Round(rb.velocity.magnitude * 3.6f).ToString();
             //angle.text = "Angle: "+Mathf.RoundToInt(Mathf.Abs(wheel.slipAngle)).ToString();
             if (gearComponent.GetCurrentGear()==1)
-            gear.text = "GEAR: N";
-            else gear.text = "GEAR: "+(gearComponent.GetCurrentGear() - 1).ToString();
+            gear.text = "N";
+            else gear.text =(gearComponent.GetCurrentGear() - 1).ToString();
             if (gearComponent.GetCurrentGear() == 0)
-                gear.text = "GEAR: R";
+                gear.text = "R";
            
             
 

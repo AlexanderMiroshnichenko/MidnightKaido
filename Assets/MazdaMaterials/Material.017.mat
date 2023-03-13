@@ -271,7 +271,7 @@ Material:
     - _RefractionModel: 0
     - _SampleGI: 0
     - _Shininess: 0
-    - _Smoothness: 0.76
+    - _Smoothness: 0.668
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessSource: 0

@@ -11,6 +11,7 @@ public class WheelControllerTFM : MonoBehaviour
     private RaycastHit hit;
     private float deltaTime;
 
+    [SerializeField] private LayerMask rayCastLayer;
     //Suspension
     [SerializeField] public float restLength = 0.65f;
     [SerializeField] public float suspensionStiffness = 50000;
@@ -38,7 +39,7 @@ public class WheelControllerTFM : MonoBehaviour
     private float currentAngle;
 
     //Wheel Velocity
-    private Vector3 linearVelocity;
+    public Vector3 linearVelocity;
     private float angularVelocity;
     private float angularAcceleration;
 
@@ -139,7 +140,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void Raycast()
     {
-        if (Physics.Raycast(transform.position, -transform.up, out hit, (restLength + wheelRadius)))
+        if (Physics.Raycast(transform.position, -transform.up, out hit, (restLength + wheelRadius), rayCastLayer))
         {
             wheelHit = true;
             currentLength = (transform.position - (hit.point + (transform.up * wheelRadius))).magnitude;
@@ -191,22 +192,19 @@ public class WheelControllerTFM : MonoBehaviour
         targetFrictionTorque = targetAngularAcceleration * wheelInertia;
         maximumFrictionTorque = fZ * wheelRadius * longFrictionCoefficient;
         sX = fZ == 0 ? 0 : targetFrictionTorque / maximumFrictionTorque;
-        sX = Mathf.Clamp(sX, -1, 1);
+       
 
     }
 
     private void GetSy()
     {
-        slipAngle = Mathf.Abs(linearVelocity.z) < 0.5 ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
-
-        coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * deltaTime;
+       slipAngle = Mathf.Abs(linearVelocity.z) ==0  ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
+      /*  coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * deltaTime;
         coeff = Mathf.Clamp(coeff, 0f, 1f);
         SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
-        // sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);
-        // sY = SADyn / slipAnglePeak;
-        sY = Mathf.Clamp(slipAngle / slipAnglePeak, -1, 1);
-        // sY += Mathf.Max(sY) - sY * coeff;
+        sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);*/
+        sY = slipAngle / slipAnglePeak;
     }
 
     public float GetSlipRatio()
@@ -235,7 +233,7 @@ public class WheelControllerTFM : MonoBehaviour
 
         Vector3 combinedForceNorm = (forwardForceVectorNormalized * fX + sideForceVectorNormalized * fY);
         Debug.DrawRay(hit.point, combinedForceNorm, Color.red);
-        rb.AddForceAtPosition(combinedForceNorm, hit.point);
+        rb.AddForceAtPosition(combinedForceNorm,hit.point);
     }
 
     public void ApplyAntirollBar(float force)

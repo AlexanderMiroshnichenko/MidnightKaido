@@ -1,0 +1,137 @@
+V6TM_GTR_Burb_07.wav
+2 Exh0_01020.wav
+4 Exh0_02226.wav
+bodywork.wav
+tyre_explosion.wav
+3 ExhL_02202.wav
+7 Exh0_03945.wav
+7 EngA_03945.wav
+veh_fi_turbo_bov_nissan_skyline_r34 0 3 0.wav
+9 EngA_05460.wav
+veh_fi_turbo_bov_nissan_skyline_r34 0 4 0.wav
+wind_draft_mono.wav
+V6TM_GTR_Burb_21.wav
+1 EngB_00540.wav
+6 EngA_03372.wav
+13 EngB_06885.wav
+V6TM_GTR_Burb_12.wav
+V6TM_GTR_Burb_03.wav
+4 ExhL_02715.wav
+15 EngB_07965.wav
+down1.wav
+3 EngA_02202.wav
+5 EngB_03285.wav
+V6TM_GTR_Burb_18.wav
+1 EngA_00753.wav
+12 Exh0_06198.wav
+5 Exh0_02790.wav
+10 ExhL_06000.wav
+V6TM_GTR_Burb_17.wav
+5 HornB_Long_01.wav
+5 ExhL_03285.wav
+15 EngA_08760.wav
+6 EngB_03372.wav
+12 EngB_07080.wav
+8 EngB_04929.wav
+3 EngB_02202.wav
+11 EngA_05823.wav
+veh_fi_turbo_bov_nissan_skyline_r34 0 1 0.wav
+6 EngA_03840.wav
+9 EngB_05460.wav
+8 EngB_04488.wav
+6 ExhL_03840.wav
+8 EngA_04488.wav
+7 ExhL_04389.wav
+2 EngB_01020.wav
+5 EngB_02790.wav
+5 EngA_02790.wav
+up1.wav
+10 EngB_06000.wav
+11 Exh0_05823.wav
+9 EngA_04899.wav
+down2.wav
+7 EngA_04389.wav
+14 EngB_08100.wav
+4 EngA_02226.wav
+6 Exh0_03372.wav
+V6TM_GTR_Burb_05.wav
+flat_tyre_mono.wav
+7 EngB_03945.wav
+12 EngA_06198.wav
+V6TM_GTR_Burb_02.wav
+veh_fi_turbo_bov_nissan_skyline_r34 0 2 0.wav
+9 ExhL_05460.wav
+14 Exh0_07461.wav
+8 ExhL_04929.wav
+1 Exh0_00540.wav
+1 ExhL_00753.wav
+8 Exh0_04488.wav
+12 EngA_07080.wav
+4 EngB_02226.wav
+2 EngA_01653.wav
+wind.wav
+9 EngB_04899.wav
+V6TM_GTR_Burb_01.wav
+skid_asphalt_lat_3.wav
+V6TM_GTR_Burb_13.wav
+15 IntakeChuff_6A2.wav
+up3.wav
+15 ExhL_08760.wav
+V6TM_GTR_Burb_20.wav
+V6TM_GTR_Burb_09.wav
+11 ExhL_06540.wav
+V6TM_GTR_Burb_06.wav
+up2.wav
+9 Exh0_04899.wav
+14 ExhL_08100.wav
+3 Exh0_01560.wav
+2 ExhL_01653.wav
+13 EngA_07662.wav
+door_open.wav
+13 Exh0_06885.wav
+13 ExhL_07662.wav
+missgear.wav
+flutter_4.wav
+10 EngA_06000.wav
+V6TM_GTR_Burb_10.wav
+1 EngB_00753.wav
+1 EngA_00540.wav
+V6TM_GTR_Burb_11.wav
+10 EngA_05511.wav
+12 ExhL_07080.wav
+3 EngA_01560.wav
+traction_control.wav
+skid_asphalt_lat_2_2.wav
+14 EngA_07461.wav
+down.wav
+down3.wav
+up.wav
+12 EngB_06198.wav
+4 EngB_02715.wav
+11 EngA_06540.wav
+veh_fi_turbo_bov_nissan_skyline_r34 0 0 0.wav
+5 EngA_03285.wav
+10 Exh0_05511.wav
+2 EngB_01653.wav
+3 EngB_01560.wav
+V6TM_GTR_Burb_04.wav
+11 EngB_06540.wav
+V6TM_GTR_Burb_16.wav
+13 EngA_06885.wav
+4 EngA_02715.wav
+2 EngA_01020.wav
+10 EngB_05511.wav
+14 EngA_08100.wav
+7 EngB_04389.wav
+11 EngB_05823.wav
+15 EngB_08760.wav
+13 EngB_07662.wav
+8 EngA_04929.wav
+door_close.wav
+sfc_asphalt_dry_roll_fast_wheela.wav
+6 EngB_03840.wav
+Ferruccio_trans.wav
+turbo_gas.wav
+14 EngB_07461.wav
+sfc_asphalt_skid2_lat1.wav
+15 Exh0_07965.wav
