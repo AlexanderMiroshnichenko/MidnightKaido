@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class CarRaceStats : MonoBehaviour
 {
+    public int carId;
     public int checkPointsPassed;
     public int position;
-    public bool isRidingForward;
+   
    
 }

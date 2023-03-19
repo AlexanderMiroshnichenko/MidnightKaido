@@ -12,37 +12,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c60f24a520f7a4aa7d558eb13b5fd5, type: 3}
   m_Name: Car Tune
   m_EditorClassIdentifier: 
-  frontRestLength: 0.35
-  frontSuspensionStiffness: 50000
-  frontDamperStiffnes: 2000
-  frontCamber: 0
-  rearRestLength: 0.35
-  rearSuspensionStiffness: 50000
-  rearDamperStiffnes: 2000
+  frontRestLength: 0.24999997
+  frontSuspensionStiffness: 250000
+  frontDamperStiffnes: 6000
+  frontCamber: -8
+  rearRestLength: 0.24999997
+  rearSuspensionStiffness: 250000
+  rearDamperStiffnes: 6000
   rearCamber: 0
   turnRadius: 4
   radius: 0.23
   mass: 15
   frontGrip: 1
-  rearGrip: 1
+  rearGrip: 2
   startFriction: 1.19
   frictionCoefficient: 0.04
   engineInertia: 0.2
   idleRPM: 700
   maxRPM: 9500
-  engineTorqueCoeff: 1
+  engineTorqueCoeff: 2.2
   gearRatios:
   - -3.55
-  - 3.483
-  - 2.015
-  - 1.391
-  - 1
-  - 0.719
+  - 2.2830002
+  - 1.4150002
+  - 0.99099994
+  - 0.70000005
+  - 0.47899997
   shiftTime: 0.1
   isLocked: 0
   differentialRatio: 4.1
-  turboStage: 0
-  engineStage: 0
-  suspensionStage: 0
-  gearBoxStage: 0
-  wheelsStage: 0
+  turboStage: 4
+  engineStage: 4
+  suspensionStage: 4
+  gearBoxStage: 4
+  wheelsStage: 4

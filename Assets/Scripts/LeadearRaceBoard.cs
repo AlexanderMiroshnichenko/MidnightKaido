@@ -9,10 +9,7 @@ public class LeadearRaceBoard : MonoBehaviour
   
     
 
-    private void Update()
-    {
-        Debug.Log(carRaceStats);
-    }
+  
 
     public void CarSort()
     {

@@ -17,7 +17,7 @@ public class WheelControllerTFM : MonoBehaviour
     [SerializeField] public float suspensionStiffness = 50000;
     private float lastLength;
     private float currentLength;
-    private float suspensionForce;
+    private float springForce;
     private float fZ;
     [SerializeField]
     public float camber;
@@ -88,6 +88,7 @@ public class WheelControllerTFM : MonoBehaviour
         rb = transform.root.GetComponent<Rigidbody>();
         wheelInertia = Mathf.Pow(wheelRadius, 2) * wheelMass;
         audioSource.Play();
+        
     }
 
     public void Steering(float angle)
@@ -121,7 +122,7 @@ public class WheelControllerTFM : MonoBehaviour
     }
     public void PhysicsUpdate(float dt)
     {
-        brakeTorque = Input.GetAxis("Vertical") > 0 ? 0 : -Input.GetAxis("Vertical") * 2000;
+       // brakeTorque = Input.GetAxis("Vertical") > 0 ? 0 : -Input.GetAxis("Vertical") * 2000;
         deltaTime = dt;
         Raycast();
         ApplyVisuals();
@@ -158,16 +159,17 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void GetSuspensionForce()
     {
-        suspensionForce = (restLength - currentLength) * suspensionStiffness;
+        springForce = (restLength - currentLength) * suspensionStiffness;
         damperForce = ((lastLength - currentLength) / deltaTime) * damperStiffness;
-        fZ = Mathf.Max(0, suspensionForce + damperForce);
+        fZ = Mathf.Max(0, springForce + damperForce);
         lastLength = currentLength;
     }
 
     private void ApplySuspensionForce()
     {
 
-        rb.AddForceAtPosition((suspensionForce + damperForce) * transform.up, transform.position - (transform.up * currentLength));
+       
+         rb.AddForceAtPosition(fZ * transform.up, hit.point);
         linearVelocity = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
     }
 
@@ -204,7 +206,7 @@ public class WheelControllerTFM : MonoBehaviour
         SADyn += (slipAngle - SADyn) * coeff;
         SADyn = Mathf.Clamp(SADyn, -90f, 90f);
         sY = Mathf.Clamp(SADyn / slipAnglePeak, -1, 1);*/
-        sY = slipAngle / slipAnglePeak;
+       sY = slipAngle / slipAnglePeak;
     }
 
     public float GetSlipRatio()
