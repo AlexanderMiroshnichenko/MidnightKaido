@@ -18,17 +18,13 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private float startTextShowTime;
     [SerializeField] private GameObject startText;
     [SerializeField] private GameObject playerHud;
-
+    [SerializeField] private Finish m_finish;
+    [SerializeField] private GameObject raceOverScreen;
 
     private void Start()
     {
-        playerInput.inputBrakes = -1;
-        playerInput.enabled = false;
-        foreach (InputController ai in aiInputs)
-        {
-            ai.inputBrakes = -1;
-            ai.enabled = false;
-        }
+        StopAllVechicles();
+        raceOverScreen.SetActive(false);
     }
 
     private void StartAI()
@@ -52,6 +48,17 @@ public class RaceManager : MonoBehaviour
         m_isTimerOn = false;
         timerText.enabled = false;
        
+    }
+
+    public void StopAllVechicles()
+    {
+        playerInput.inputBrakes = -1;
+        playerInput.enabled = false;
+        foreach (InputController ai in aiInputs)
+        {
+            ai.inputBrakes = -1;
+            ai.enabled = false;
+        }
     }
 
     private void Update()
@@ -78,6 +85,15 @@ public class RaceManager : MonoBehaviour
             
 
 
+        }
+
+
+
+        if (m_finish.isRaceOver == true)
+        {
+            StopAllVechicles();
+            raceOverScreen.SetActive(true);
+       
         }
     }
     
