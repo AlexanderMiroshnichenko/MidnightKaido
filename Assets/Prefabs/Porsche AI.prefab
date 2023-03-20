@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5560219393827465500}
   - component: {fileID: 2262668244289645809}
   - component: {fileID: 7317559686272543616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8936824056371288726}
   - component: {fileID: 7461697800345602546}
   - component: {fileID: 5553883110000586422}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 1728968024221410610}
   - component: {fileID: 5110908782406951111}
   - component: {fileID: 6818959812424723168}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 5703355444904481981}
   - component: {fileID: 4599723593329093580}
   - component: {fileID: 1897112893532985068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 6159054067527763430}
   - component: {fileID: 117977325350215490}
   - component: {fileID: 9032240067972077592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 1966944428321850117}
   - component: {fileID: 3006420666504248630}
   - component: {fileID: 8511123370170655629}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 9194712546260165645}
   - component: {fileID: 3688904053662566288}
   - component: {fileID: 1431852365482083282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 6641322454152986389}
   - component: {fileID: 4268098848395981742}
   - component: {fileID: 9049982963242013283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 7566738851387448359}
   - component: {fileID: 8111015373553829257}
   - component: {fileID: 3752475189390629177}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 8161728066300065638}
   - component: {fileID: 7295834675625892397}
   - component: {fileID: 4507735688760573065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 7545169797722024038}
   - component: {fileID: 2028293984565920717}
   - component: {fileID: 8378637024873910608}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1107,9 +1107,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCastLayer:
     serializedVersion: 2
-    m_Bits: 0
-  restLength: 0.3
-  suspensionStiffness: 50000
+    m_Bits: 63
+  restLength: 0.29
+  suspensionStiffness: 200000
   camber: -5
   damperStiffness: 8000
   visualMesh: {fileID: 5872096746108913135}
@@ -1121,13 +1121,13 @@ MonoBehaviour:
   targetFrictionTorque: 0
   maximumFrictionTorque: 0
   longFrictionCoefficient: 1
-  slipAngle: 8
-  slipAnglePeak: 2
+  slipAngle: 5
+  slipAnglePeak: 8
   sX: 0
   sY: 0
-  relaxationLenth: 0.01
-  latCoeff: 2
-  longCoeff: 2
+  relaxationLenth: 0.005
+  latCoeff: 1
+  longCoeff: 1
   audioSource: {fileID: 5872096744042913541}
   smoke: {fileID: 5872096745226498240}
   slipValueForAudio: 0.5
@@ -6253,7 +6253,9 @@ GameObject:
   - component: {fileID: 5872096744164045475}
   - component: {fileID: 5167401280141737998}
   - component: {fileID: 5872096744164045474}
-  m_Layer: 0
+  - component: {fileID: 1924810224}
+  - component: {fileID: 1924810223}
+  m_Layer: 6
   m_Name: Porsche AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6267,7 +6269,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5872096744164045477}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.19, y: 0.26000023, z: 27.97998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6296,7 +6298,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!65 &5167401280141737998
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6326,14 +6328,44 @@ MonoBehaviour:
   inputBrakes: 0
   inputSteering: 0
   inputHandBrake: 0
+  maxAISpeed: 150
   waypoints: {fileID: 0}
   currentWaypoint: {fileID: 0}
   nodes: []
+  dashboard: {fileID: 5872096744600042621}
   distanceOffset: 2
-  AIstreerForce: 1.13
+  AIstreerForce: 1
   AIThrottle: 0
   driveType: 1
   steeringSensivity: 0
+--- !u!65 &1924810224
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872096744164045477}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999976, y: 0.23082921, z: 3.2480884}
+  m_Center: {x: 0, y: 0.045414634, z: -0.033144947}
+--- !u!114 &1924810223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872096744164045477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55231cd489b56af4aaf7013fc108aa99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carId: 0
+  checkPointsPassed: 0
+  position: 0
 --- !u!1 &5872096744222868099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6564,9 +6596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCastLayer:
     serializedVersion: 2
-    m_Bits: 0
-  restLength: 0.3
-  suspensionStiffness: 50000
+    m_Bits: 63
+  restLength: 0.29
+  suspensionStiffness: 200000
   camber: 5
   damperStiffness: 8000
   visualMesh: {fileID: 5872096745528173689}
@@ -6578,13 +6610,13 @@ MonoBehaviour:
   targetFrictionTorque: 0
   maximumFrictionTorque: 0
   longFrictionCoefficient: 1
-  slipAngle: 8
-  slipAnglePeak: 2
+  slipAngle: 5
+  slipAnglePeak: 8
   sX: 0
   sY: 0
-  relaxationLenth: 0.01
-  latCoeff: 2
-  longCoeff: 2
+  relaxationLenth: 0.005
+  latCoeff: 1
+  longCoeff: 1
   audioSource: {fileID: 5872096744385559592}
   smoke: {fileID: 5872096745827057422}
   slipValueForAudio: 0.5
@@ -6840,6 +6872,7 @@ MonoBehaviour:
   brakes: {fileID: 5872096744600042619}
   antirollBar: {fileID: 5872096744600042618}
   dashboard: {fileID: 5872096744600042621}
+  m_stopLightsController: {fileID: 0}
   _inputController: {fileID: 5872096744164045474}
   shiftUpBtn: 101
   shiftDownBtn: 113
@@ -7077,6 +7110,7 @@ MonoBehaviour:
   maxTachoAngle: -193.78
   zeroSpeedAngle: 36
   maxSpeedAngle: -130
+  speed: 0
   wheel: {fileID: 5872096745560654388}
 --- !u!114 &5872096744600042565
 MonoBehaviour:
@@ -7647,7 +7681,7 @@ MonoBehaviour:
   spatialBlend: 1
   pitchMultiplier: 1.235
   optimisationLevel: 0.001
-  audioRolloffMode: 0
+  audioRolloffMode: 1
   minDistance: 1
   maxDistance: 50
   isReversing: 1
@@ -7657,7 +7691,7 @@ MonoBehaviour:
   carMaxSpeed: 0
   isShifting: 0
   gasPedalPressing: 0
-  idleClip: {fileID: 8300000, guid: bf065e37782a8be4ea60186d4a47bbda, type: 3}
+  idleClip: {fileID: 8300000, guid: b68fa6674a5eec549a3f5bacf3b2e5ca, type: 3}
   idleVolCurve:
     serializedVersion: 2
     m_Curve:
@@ -7715,7 +7749,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  lowOnClip: {fileID: 8300000, guid: a3fb150b52a0a0743a10bd15170da233, type: 3}
+  lowOnClip: {fileID: 8300000, guid: ef6bfae21e677f9478610ed7740108b0, type: 3}
   lowVolCurve:
     serializedVersion: 2
     m_Curve:
@@ -7782,7 +7816,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  medOnClip: {fileID: 8300000, guid: a3fb150b52a0a0743a10bd15170da233, type: 3}
+  medOnClip: {fileID: 8300000, guid: fdae2c78b26a12641aba675113efbfcf, type: 3}
   medVolCurve:
     serializedVersion: 2
     m_Curve:
@@ -7916,7 +7950,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  maxRPMClip: {fileID: 8300000, guid: 120d69c48a8072249b113eb469522982, type: 3}
+  maxRPMClip: {fileID: 8300000, guid: f2efb262a3beeed4eb67861e1b3df4a8, type: 3}
   maxRPMVolCurve:
     serializedVersion: 2
     m_Curve:
@@ -14314,9 +14348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCastLayer:
     serializedVersion: 2
-    m_Bits: 0
-  restLength: 0.35
-  suspensionStiffness: 50000
+    m_Bits: 63
+  restLength: 0.29
+  suspensionStiffness: 200000
   camber: 3
   damperStiffness: 8000
   visualMesh: {fileID: 5872096745519576576}
@@ -14329,10 +14363,10 @@ MonoBehaviour:
   maximumFrictionTorque: 0
   longFrictionCoefficient: 1
   slipAngle: 8
-  slipAnglePeak: 2
+  slipAnglePeak: 1
   sX: 0
   sY: 0
-  relaxationLenth: 0.01
+  relaxationLenth: 0.005
   latCoeff: 2
   longCoeff: 2
   audioSource: {fileID: 5872096745560654391}
@@ -19363,9 +19397,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCastLayer:
     serializedVersion: 2
-    m_Bits: 0
-  restLength: 0.35
-  suspensionStiffness: 50000
+    m_Bits: 63
+  restLength: 0.29
+  suspensionStiffness: 200000
   camber: -3
   damperStiffness: 8000
   visualMesh: {fileID: 5872096744093702039}
@@ -19378,10 +19412,10 @@ MonoBehaviour:
   maximumFrictionTorque: 0
   longFrictionCoefficient: 1
   slipAngle: 8
-  slipAnglePeak: 2
+  slipAnglePeak: 1
   sX: 0
   sY: 0
-  relaxationLenth: 0.01
+  relaxationLenth: 0.005
   latCoeff: 2
   longCoeff: 2
   audioSource: {fileID: 5872096745900771068}
@@ -24840,7 +24874,7 @@ GameObject:
   - component: {fileID: 2789976497028574797}
   - component: {fileID: 3305754781514760945}
   - component: {fileID: 5918490481925551236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24923,7 +24957,7 @@ GameObject:
   - component: {fileID: 4702348608809312403}
   - component: {fileID: 7469099679116293746}
   - component: {fileID: 4198241615802016438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25006,7 +25040,7 @@ GameObject:
   - component: {fileID: 4660102534150882739}
   - component: {fileID: 2899770266502521491}
   - component: {fileID: 4457277119399004606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25089,7 +25123,7 @@ GameObject:
   - component: {fileID: 5895962445788029563}
   - component: {fileID: 6666126336222676923}
   - component: {fileID: 3260592700266120671}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25172,7 +25206,7 @@ GameObject:
   - component: {fileID: 4256106876535087427}
   - component: {fileID: 7951389570031742514}
   - component: {fileID: 3023822075415920729}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25253,7 +25287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6947461369559398885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25306,7 +25340,7 @@ GameObject:
   - component: {fileID: 5222456525462630463}
   - component: {fileID: 2866392519320210407}
   - component: {fileID: 5357535470312697776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25389,7 +25423,7 @@ GameObject:
   - component: {fileID: 7940580214612788690}
   - component: {fileID: 2141104244971944676}
   - component: {fileID: 2934871310396226166}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25472,7 +25506,7 @@ GameObject:
   - component: {fileID: 4670016376225936639}
   - component: {fileID: 2646458250871424418}
   - component: {fileID: 6566906705514832823}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25555,7 +25589,7 @@ GameObject:
   - component: {fileID: 1673239989079252434}
   - component: {fileID: 728018870992312826}
   - component: {fileID: 5401583737385116824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Object_24
   m_TagString: Untagged
   m_Icon: {fileID: 0}

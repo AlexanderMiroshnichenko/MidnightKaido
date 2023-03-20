@@ -17,17 +17,25 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float startTextShowTime;
     [SerializeField] private GameObject startText;
+    [SerializeField] private GameObject playerHud;
 
 
     private void Start()
     {
-       
+        playerInput.inputBrakes = -1;
+        playerInput.enabled = false;
+        foreach (InputController ai in aiInputs)
+        {
+            ai.inputBrakes = -1;
+            ai.enabled = false;
+        }
     }
 
     private void StartAI()
     {
         foreach(InputController ai in aiInputs)
         {
+            ai.enabled = true;
             ai.AIThrottle = 1f;
         }
     }
@@ -35,7 +43,7 @@ public class RaceManager : MonoBehaviour
     {
         m_isTimerOn=true;
         m_gamePlayController.StartTime();
-        playerInput.enabled = false;
+       
         timerText.enabled = true;
         
     }
@@ -58,16 +66,17 @@ public class RaceManager : MonoBehaviour
 
             if (m_startTimerValue <= 0)
             {
-              
-               
+
+                m_isTimerOn = false;
                 FinishTimer();
                 StartAI();
                 playerInput.enabled = true;
                 startText.SetActive(true);
 
-
+                
             }
             
+
 
         }
     }

@@ -8,12 +8,13 @@ public class InputController : MonoBehaviour
     public float inputBrakes;
     public float inputSteering;
     public float inputHandBrake;
-
+    public int maxAISpeed;
     public InputManager _inputs;
 
     public TrackWaypoints waypoints;
     public Transform currentWaypoint;
     public List<Transform> nodes = new List<Transform>();
+    public Dashboard dashboard;
     [Range(0, 10)] public int distanceOffset;
     [Range(0, 5)] public float AIstreerForce;
   
@@ -101,6 +102,12 @@ public class InputController : MonoBehaviour
     {
         
         inputThrottle = AIThrottle;
+        if (dashboard.speed >= maxAISpeed)
+        {
+            inputThrottle = 0;
+            inputBrakes = -1;
+        }
+        else inputBrakes = 0;
         AISteer();
        
     }

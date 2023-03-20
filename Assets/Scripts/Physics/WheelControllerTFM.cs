@@ -200,7 +200,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     private void GetSy()
     {
-       slipAngle = Mathf.Abs(linearVelocity.z) ==0  ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
+       slipAngle = Mathf.Abs(linearVelocity.z) <=0.5  ? 0 : Mathf.Atan(-linearVelocity.x / Mathf.Abs(linearVelocity.z)) * Mathf.Rad2Deg;
       /*  coeff = (Mathf.Abs(linearVelocity.x) / relaxationLenth) * deltaTime;
         coeff = Mathf.Clamp(coeff, 0f, 1f);
         SADyn += (slipAngle - SADyn) * coeff;
@@ -211,7 +211,7 @@ public class WheelControllerTFM : MonoBehaviour
 
     public float GetSlipRatio()
     {
-        return linearVelocity.z == 0 ? 0 : (angularVelocity * wheelRadius) - linearVelocity.z;
+        return linearVelocity.z <= 0.5 ? 0 : (angularVelocity * wheelRadius) - linearVelocity.z;
     }
 
     private void AddTireForce()

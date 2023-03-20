@@ -21,7 +21,7 @@ public class Dashboard : MonoBehaviour
     private float tachoAngleSize;
     private float speedAngleSize;
     private float engineMaxRpm;
-    private float speed;
+    public float speed;
     private Rigidbody rb;
     //[SerializeField] private Text angle;
     [SerializeField] private WheelControllerTFM wheel;
@@ -36,6 +36,7 @@ public class Dashboard : MonoBehaviour
     // Update is called once per frame
     public void UpdateD(float engineRpm)
     {
+        speed = Mathf.Round(rb.velocity.magnitude * 3.6f);
         if (isEnabled)
         {
             float rpmNormalized = engineRpm / engineMaxRpm;
@@ -48,7 +49,6 @@ public class Dashboard : MonoBehaviour
             speedAngle = zeroSpeedAngle - speedNormalized * speedAngleSize;
             needleSpeed.eulerAngles = new Vector3(0, 0, speedAngle);
 
-            speed = Mathf.Round(rb.velocity.magnitude * 3.6f);
 
 
             // speedText.text = Mathf.Round(rb.velocity.magnitude * 3.6f).ToString();
