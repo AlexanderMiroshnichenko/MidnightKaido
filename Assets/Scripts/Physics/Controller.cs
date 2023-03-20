@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour
     
     [SerializeField] AntiRollBarComponent antirollBar;
     [SerializeField] Dashboard dashboard;
+    [SerializeField] private StopLightsController m_stopLightsController;
 
   
     [SerializeField] private InputController _inputController;
@@ -116,6 +117,16 @@ public class Controller : MonoBehaviour
         inputBrakes = _inputController.inputBrakes;
         inputSteering = _inputController.inputSteering;
         inputHandBrake = _inputController.inputHandBrake;
+
+        if (Mathf.Abs(inputBrakes) > 0)
+        {
+            m_stopLightsController.TurnLightsOn();
+        }
+        else { 
+            if(m_stopLightsController!=null)
+            m_stopLightsController.TurnLightsOff(); 
+        }
+
 
     }
 
