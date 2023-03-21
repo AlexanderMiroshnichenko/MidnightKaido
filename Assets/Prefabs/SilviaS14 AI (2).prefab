@@ -13780,8 +13780,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6000001, y: 0.54746556, z: 4.23}
-  m_Center: {x: 0, y: 0.091267645, z: 0}
+  m_Size: {x: 1.0578943, y: 0.54746556, z: 2.8125122}
+  m_Center: {x: 0.011244238, y: 0.091267645, z: -0.0017660855}
 --- !u!114 &948385550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13797,6 +13797,7 @@ MonoBehaviour:
   carId: 0
   checkPointsPassed: 0
   position: 0
+  hasWon: 0
 --- !u!1 &5747645175740465002
 GameObject:
   m_ObjectHideFlags: 0

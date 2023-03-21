@@ -6251,7 +6251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5872096744164045472}
   - component: {fileID: 5872096744164045475}
-  - component: {fileID: 5167401280141737998}
   - component: {fileID: 5872096744164045474}
   - component: {fileID: 1924810224}
   - component: {fileID: 1924810223}
@@ -6299,19 +6298,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!65 &5167401280141737998
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5872096744164045477}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999976, y: 0.23082921, z: 3.2480884}
-  m_Center: {x: 0, y: 0.045414634, z: -0.033144947}
 --- !u!114 &5872096744164045474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6366,6 +6352,7 @@ MonoBehaviour:
   carId: 0
   checkPointsPassed: 0
   position: 0
+  hasWon: 0
 --- !u!1 &5872096744222868099
 GameObject:
   m_ObjectHideFlags: 0
