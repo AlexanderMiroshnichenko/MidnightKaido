@@ -74,7 +74,7 @@ public class InputController : MonoBehaviour
         inputThrottle = _inputs.Gameplay.AccBrakes.ReadValue<float>() < 0 ? 0 : _inputs.Gameplay.AccBrakes.ReadValue<float>();
         inputBrakes = _inputs.Gameplay.AccBrakes.ReadValue<float>() > 0 ? 0 : _inputs.Gameplay.AccBrakes.ReadValue<float>();
          inputSteering = Mathf.Lerp(inputSteering, _inputs.Gameplay.Steering.ReadValue<float>(), steeringSensivity * Time.fixedDeltaTime);
-        Debug.Log(inputSteering);
+       
        // inputSteering = _inputs.Gameplay.Steering.ReadValue<float>();
         inputHandBrake = _inputs.Gameplay.HandBrake.ReadValue<float>();
       

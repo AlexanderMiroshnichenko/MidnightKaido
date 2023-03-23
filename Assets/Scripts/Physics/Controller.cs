@@ -118,7 +118,7 @@ public class Controller : MonoBehaviour
         inputSteering = _inputController.inputSteering;
         inputHandBrake = _inputController.inputHandBrake;
 
-        if (Mathf.Abs(inputBrakes) > 0)
+        if (Mathf.Abs(inputBrakes) > 0&& m_stopLightsController!=null)
         {
             m_stopLightsController.TurnLightsOn();
         }
