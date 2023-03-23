@@ -551,7 +551,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh184616
+  m_Name: pb_Mesh1604674
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29738,7 +29738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 81, y: -240}
+  m_AnchoredPosition: {x: 81, y: -72}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897688301
@@ -34400,6 +34400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044344802}
   - component: {fileID: 1044344801}
+  - component: {fileID: 1044344803}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -34442,6 +34443,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1044344803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044344800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4e540c0c8b462498a8e3c2181d416a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldCountText: {fileID: 0}
+  storeData: {fileID: 0}
 --- !u!1 &1047246807
 GameObject:
   m_ObjectHideFlags: 0
@@ -48821,10 +48836,10 @@ RectTransform:
   m_Father: {fileID: 1573541572}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -53.9}
-  m_SizeDelta: {x: 1898.8, y: 870.4}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414116423
 MonoBehaviour:
@@ -48839,7 +48854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.99607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
