@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class OptionsApplyer : MonoBehaviour
@@ -33,14 +34,8 @@ public class OptionsApplyer : MonoBehaviour
     }
     private void Start()
     {
-        var carAudioObjects = GameObject.FindGameObjectsWithTag("carAudio");
-
-        if (carAudioObjects != null)
-            for (int i = 0; i < carAudioObjects.Length; i++)
-            {
-                carAudio[i] = carAudioObjects[i].GetComponent<AudioSource>();
-            }
-
+       
+       SceneManager.sceneLoaded += OnSceneLoaded;
 
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -58,28 +53,40 @@ public class OptionsApplyer : MonoBehaviour
         if (bgMusic != null)
             music = bgMusic.GetComponent<AudioSource>();
 
-        OptionsApply();
-    }
-    private void OnEnable()
-    {
         
+    }
+  void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+         
+
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerController = player.GetComponent<InputController>();
+            car = player.GetComponentInChildren<Controller>();
+        }
+
+        globalVolume = GameObject.FindGameObjectWithTag("PostProcess");
+
+        camera = GameObject.FindAnyObjectByType<CinemachineVirtualCamera>();
+
+        var bgMusic = GameObject.FindAnyObjectByType<BGmusic>();
+
+        if (bgMusic != null)
+            music = bgMusic.GetComponent<AudioSource>();
+
+OptionsApply();
     }
     public void OptionsApply()
     {
-        CarAudioApply();
+      
         BGMusicApply();
         SensivityApply();
         PostProcessApply();
         GearBoxApply();
     }
 
-    public void CarAudioApply()
-    {
-        foreach(AudioSource audio in carAudio)
-        {
-            audio.volume = options.carVolume;
-        }
-    }
+
 
     public void BGMusicApply()
     {

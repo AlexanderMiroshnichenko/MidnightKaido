@@ -10,6 +10,8 @@ public class Options : ScriptableObject
     [Header("GamePlay")]
 
     public float sensivity;
+
+
    public  enum GearBoxType
     {
         manual,
@@ -18,12 +20,25 @@ public class Options : ScriptableObject
     public GearBoxType gearBoxType;
 
     [Header("Audio")]
-    public float carVolume;
     public float musicVolume;
 
 
     [Header("Video")]
 
-    public float fov;
+   
     public bool isPostProcess;
+
+    public AudioSource musicSource;
+
+
+    public void SetMusicValue()
+    {
+        musicSource.volume=musicVolume;
+    }
+
+
+    
+
+
+
 }

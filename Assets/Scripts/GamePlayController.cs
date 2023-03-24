@@ -11,12 +11,13 @@ public class GamePlayController : MonoBehaviour
     private void Awake()
     {
         StopTime();
+       Application.targetFrameRate=30;
        
     }
     private void Start()
     {
-        ShowUpState();
-        StartRaceState();
+        // ShowUpState();
+        // StartRaceState();
     }
 
     private void OnEnable()
@@ -28,25 +29,25 @@ public class GamePlayController : MonoBehaviour
     public void ShowUpState()
     {
         _gamePlayCanvas.SetActive(false);
-        _cameraStateMachine.ShowUpState();
+       
         _inputController.enabled = false;
     }
     public void StartRaceState()
     {
         _gamePlayCanvas.SetActive(true);
-        _cameraStateMachine.OnRaceState();
+       
         _inputController.enabled = true;
     }
     public void LoseState()
     {
         _gamePlayCanvas.SetActive(false);
-        _cameraStateMachine.ShowUpState();
+       
         //active loose canvas
     }
     public void FinishState()
     {
         _gamePlayCanvas.SetActive(false);
-        _cameraStateMachine.ShowUpState();
+       
         //active end race canvas
 
     }

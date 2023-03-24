@@ -12,17 +12,7 @@ public class CameraStateMachine : MonoBehaviour
 
 
 
-    public void ShowUpState()
-    {
-        _mainCam.SetActive(false);
-        _showUpRaceCam.SetActive(true);
-    }
-
-    public void OnRaceState()
-    {
-        _mainCam.SetActive(true);
-        
-    }
+   
 
 
 

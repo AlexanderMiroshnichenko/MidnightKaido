@@ -23,8 +23,9 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
-        StopAllVechicles();
+        
         raceOverScreen.SetActive(false);
+        StopAllVechicles();
     }
 
     private void StartAI()
@@ -52,6 +53,7 @@ public class RaceManager : MonoBehaviour
 
     public void StopAllVechicles()
     {
+        Debug.Log("STOPEED");
         playerInput.inputBrakes = -1;
         playerInput.enabled = false;
         foreach (InputController ai in aiInputs)

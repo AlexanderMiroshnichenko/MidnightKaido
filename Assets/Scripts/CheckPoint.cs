@@ -5,20 +5,7 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     public LeadearRaceBoard leadearRaceBoard;
-    //public bool hasPassedThis;
-    /*  private void OnTriggerEnter(Collider other)
-      {
-          if (!hasPassedThis) { 
-          other.gameObject.GetComponent<CarRaceStats>().checkPointsPassed++;
-              hasPassedThis = true;
-              leadearRace.CarSort();
-
-          }
-          else
-          {
-              Debug.Log("Teleport");
-          }
-      }*/
+    
 
     private void OnTriggerEnter(Collider other)
     {

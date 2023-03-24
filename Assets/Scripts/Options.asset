@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3fddd7f5d190a45853a563131c7285, type: 3}
   m_Name: Options
   m_EditorClassIdentifier: 
-  sensivity: 0
+  sensivity: 3
   gearBoxType: 0
-  carVolume: 0
-  musicVolume: 0
-  fov: 0
-  isPostProcess: 0
+  musicVolume: 0.16743188
+  isPostProcess: 1
+  musicSource: {fileID: 0}
