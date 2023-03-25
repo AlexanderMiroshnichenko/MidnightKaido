@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
+using UnityEngine.Audio;
 
 public class OptionsApplyer : MonoBehaviour
 {
     public Options options;
 
-    public AudioSource[] carAudio;
-    public AudioSource music;
+    public AudioMixer mixer;
 
     public CinemachineVirtualCamera camera;
 
@@ -32,30 +32,16 @@ public class OptionsApplyer : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+   
     private void Start()
     {
-       
-       SceneManager.sceneLoaded += OnSceneLoaded;
-
-        var player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerController = player.GetComponent<InputController>();
-            car = player.GetComponentInChildren<Controller>();
-        }
-
-        globalVolume = GameObject.FindGameObjectWithTag("PostProcess");
-
-        camera = GameObject.FindAnyObjectByType<CinemachineVirtualCamera>();
-
-        var bgMusic = GameObject.FindAnyObjectByType<BGmusic>();
-
-        if (bgMusic != null)
-            music = bgMusic.GetComponent<AudioSource>();
-
-        
+        OptionsApply();
     }
-  void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
          
 
@@ -70,12 +56,9 @@ public class OptionsApplyer : MonoBehaviour
 
         camera = GameObject.FindAnyObjectByType<CinemachineVirtualCamera>();
 
-        var bgMusic = GameObject.FindAnyObjectByType<BGmusic>();
+       
 
-        if (bgMusic != null)
-            music = bgMusic.GetComponent<AudioSource>();
-
-OptionsApply();
+        OptionsApply();
     }
     public void OptionsApply()
     {
@@ -86,29 +69,39 @@ OptionsApply();
         GearBoxApply();
     }
 
-
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     public void BGMusicApply()
     {
-        music.volume = options.musicVolume;
+        mixer.SetFloat("MusicMaster", Mathf.Log10(options.musicVolume) * 20);
     }
 
     public void SensivityApply()
     {
+        if(playerController!=null)
         playerController.steeringSensivity = options.sensivity;
     }
     public void PostProcessApply()
     {
+        if(globalVolume!=null)
         globalVolume.SetActive(options.isPostProcess);
     }
-
+    
     public void GearBoxApply()
     {
-        if (options.gearBoxType == Options.GearBoxType.manual)
+        if (car != null)
         {
-            car.gearBoxType = Controller.GearBoxType.manual;
+            if (options.gearBoxType == Options.GearBoxType.manual)
+            {
+                car.gearBoxType = Controller.GearBoxType.manual;
+            }
+            else car.gearBoxType = Controller.GearBoxType.auto;
+
         }
-        else car.gearBoxType = Controller.GearBoxType.auto;
+        
     }
 
 

@@ -11,7 +11,7 @@ public class GamePlayController : MonoBehaviour
     private void Awake()
     {
         StopTime();
-       Application.targetFrameRate=30;
+      
        
     }
     private void Start()

@@ -28,13 +28,7 @@ public class Options : ScriptableObject
    
     public bool isPostProcess;
 
-    public AudioSource musicSource;
-
-
-    public void SetMusicValue()
-    {
-        musicSource.volume=musicVolume;
-    }
+  
 
 
     

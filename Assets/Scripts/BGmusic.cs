@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class BGmusic : MonoBehaviour
 {
     public static BGmusic instance;
-
+   
     public AudioSource mainMenuMusic;
     public AudioSource gamePlayMusic;
 
     void Awake()
     {
+
         if (instance != null)
             Destroy(gameObject);
         else
@@ -19,28 +20,36 @@ public class BGmusic : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
-       
     }
-    private void Start()
+   
+    private void OnEnable()
     {
-     
         SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-  
 
+    }
+    
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            mainMenuMusic.enabled = true;
+           
             gamePlayMusic.enabled = false;
+            mainMenuMusic.enabled = true;
+            mainMenuMusic.Play();
+           
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             mainMenuMusic.enabled = false;
             gamePlayMusic.enabled = true;
+            gamePlayMusic.Play();
         }
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Debug.Log("Disable Event");
     }
 
 }

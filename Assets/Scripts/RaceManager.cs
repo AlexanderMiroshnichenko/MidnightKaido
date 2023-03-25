@@ -53,7 +53,7 @@ public class RaceManager : MonoBehaviour
 
     public void StopAllVechicles()
     {
-        Debug.Log("STOPEED");
+      
         playerInput.inputBrakes = -1;
         playerInput.enabled = false;
         foreach (InputController ai in aiInputs)

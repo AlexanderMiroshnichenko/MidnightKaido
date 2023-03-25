@@ -7,7 +7,7 @@ public class OptionsChanger : MonoBehaviour
 {
     public Options options;
     public Slider sensivity;
-    public Slider[] audio;
+    public Slider[] audioSlider;
    
     public Toggle isPostProcess;
 
@@ -19,7 +19,7 @@ public class OptionsChanger : MonoBehaviour
     {
         sensivity.value = options.sensivity;
         
-        audio[0].value = options.musicVolume;
+        audioSlider[0].value = options.musicVolume;
        
         isPostProcess.isOn = options.isPostProcess;
     }
@@ -27,7 +27,7 @@ public class OptionsChanger : MonoBehaviour
     {   
         options.sensivity = sensivity.value;
         
-        options.musicVolume = audio[0].value;
+        options.musicVolume = audioSlider[0].value;
       
         options.isPostProcess = isPostProcess.isOn;
     }
