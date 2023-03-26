@@ -11,7 +11,7 @@ public class GamePlayController : MonoBehaviour
     private void Awake()
     {
         StopTime();
-      
+       
        
     }
     private void Start()

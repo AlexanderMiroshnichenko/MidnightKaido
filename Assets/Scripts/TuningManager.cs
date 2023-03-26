@@ -17,10 +17,18 @@ public class TuningManager : MonoBehaviour
     [SerializeField] private int suspensionStage;
     [SerializeField] private int gearBoxStage;
     [SerializeField] private int wheelStage;
-    
+
+    [SerializeField] private int turboPrice;
+    [SerializeField] private int enginePrice;
+    [SerializeField] private int suspensionPrice;
+    [SerializeField] private int gearBoxPrice;
+    [SerializeField] private int wheelPrice;
+
+    [SerializeField] public PlayerData playerData;
 
     [SerializeField] private List<TuneComponent> tuneComponents;
 
+    [SerializeField] private GameObject notEnoughtMoneyPanel;
 
     private void Awake()
     {
@@ -39,84 +47,113 @@ public class TuningManager : MonoBehaviour
 
     public void TurboToNextStage(float torqueCoeffIncrease)
     {
-       
-        // ToNextStage(turboStage, maxTurboStage);
-        if (turboStage < maxTurboStage)
-        {
 
-            turboStage++;
-            m_carTune.engineTorqueCoeff += torqueCoeffIncrease;
-            m_tuneApplyer.TuneApply();
-            m_carTune.turboStage = turboStage;
+        // ToNextStage(turboStage, maxTurboStage);
+        if (playerData.playerMoney >= turboPrice)
+        {
+            if (turboStage < maxTurboStage)
+            {
+
+                turboStage++;
+                m_carTune.engineTorqueCoeff += torqueCoeffIncrease;
+                m_tuneApplyer.TuneApply();
+                m_carTune.turboStage = turboStage;
+                    tuneComponents[0].OnUIStageChange(turboStage);
+                playerData.playerMoney -= turboPrice;
+            }
+            
         }
-        tuneComponents[0].OnUIStageChange(turboStage);
+        else
+        notEnoughtMoneyPanel.SetActive(true);
     }
 
     public void EngineToNextStage(float torqueCoeffIncrease)
     {
-        // ToNextStage(engineStage, maxEngineStage);
-        if (engineStage < maxEngineStage)
+        if (playerData.playerMoney >= enginePrice)
         {
+            if (engineStage < maxEngineStage)
+            {
 
-            engineStage++;
-            m_carTune.engineTorqueCoeff += torqueCoeffIncrease;
-            m_tuneApplyer.TuneApply();
-            m_carTune.engineStage = engineStage;
+                engineStage++;
+                m_carTune.engineTorqueCoeff += torqueCoeffIncrease;
+                m_tuneApplyer.TuneApply();
+                m_carTune.engineStage = engineStage;
+                tuneComponents[1].OnUIStageChange(engineStage);
+                playerData.playerMoney -= enginePrice;
+            }
+
         }
-        tuneComponents[1].OnUIStageChange(engineStage);
+        else
+            notEnoughtMoneyPanel.SetActive(true);
     }
 
     public void SuspensionToNextStage(float stiffnessIncrease)
     {
-        //  ToNextStage(suspensionStage, maxSuspensionStage);
-        if (suspensionStage < maxSuspensionStage)
+        if (playerData.playerMoney >= suspensionPrice)
         {
+            if (suspensionStage < maxSuspensionStage)
+            {
 
-            suspensionStage++;
-            m_carTune.frontSuspensionStiffness += stiffnessIncrease;
-            m_carTune.rearSuspensionStiffness += stiffnessIncrease;
-            m_carTune.frontDamperStiffnes += 1000f;
-            m_carTune.rearDamperStiffnes += 1000f;
-            m_carTune.frontRestLength -= 0.025f;
-            m_carTune.rearRestLength -= 0.025f;
-            m_carTune.frontCamber -= 2;
-            m_tuneApplyer.TuneApply();
-            m_carTune.suspensionStage=suspensionStage;
-
+                suspensionStage++;
+                m_carTune.frontSuspensionStiffness += stiffnessIncrease;
+                m_carTune.rearSuspensionStiffness += stiffnessIncrease;
+                m_carTune.frontDamperStiffnes += 1000f;
+                m_carTune.rearDamperStiffnes += 1000f;
+                m_carTune.frontRestLength -= 0.025f;
+                m_carTune.rearRestLength -= 0.025f;
+                m_carTune.frontCamber -= 2;
+                m_tuneApplyer.TuneApply();
+                m_carTune.suspensionStage = suspensionStage;
+                playerData.playerMoney -= suspensionPrice;
+                tuneComponents[2].OnUIStageChange(suspensionStage);
+            }
+            
         }
-        tuneComponents[2].OnUIStageChange(suspensionStage);
+        else notEnoughtMoneyPanel.SetActive(true);
+
     }
 
     public void GearBoxToNextStage(float gearLengthIncrease)
     {
-        // ToNextStage(gearBoxStage, maxGearBoxStage);
-        if (gearBoxStage < maxGearBoxStage)
+        if (playerData.playerMoney >= gearBoxPrice)
         {
-
-            gearBoxStage++;
-            for(int i = 1; i < m_carTune.gearRatios.Length; i++)
+            if (gearBoxStage < maxGearBoxStage)
             {
-                m_carTune.gearRatios[i] -= gearLengthIncrease/i;
+
+                gearBoxStage++;
+                for (int i = 1; i < m_carTune.gearRatios.Length; i++)
+                {
+                    m_carTune.gearRatios[i] -= gearLengthIncrease / i;
+                }
+                m_tuneApplyer.TuneApply();
+                m_carTune.gearBoxStage = gearBoxStage;
+                playerData.playerMoney -= gearBoxPrice;
+                tuneComponents[3].OnUIStageChange(gearBoxStage);
             }
-            m_tuneApplyer.TuneApply();
-            m_carTune.gearBoxStage=gearBoxStage;
+           
         }
-        tuneComponents[3].OnUIStageChange(gearBoxStage);
+        else notEnoughtMoneyPanel.SetActive(true);
     }
 
     public void WheelsToNextStage(float tireCoeffIncrease)
     {
-        //  ToNextStage(wheelStage, maxWheelStage);
-        if (wheelStage < maxWheelStage)
+        if (playerData.playerMoney >= gearBoxPrice)
         {
+            if (wheelStage < maxWheelStage)
+            {
 
-            wheelStage++;
-            
-            m_carTune.rearGrip += tireCoeffIncrease;
-            m_tuneApplyer.TuneApply();
-            m_carTune.wheelsStage=wheelStage;
+                wheelStage++;
+
+                m_carTune.rearGrip += tireCoeffIncrease;
+                m_tuneApplyer.TuneApply();
+                m_carTune.wheelsStage = wheelStage;
+                playerData.playerMoney -= wheelPrice;
+                 tuneComponents[4].OnUIStageChange(wheelStage);
+            }
+           
         }
-        tuneComponents[4].OnUIStageChange(wheelStage);
+        else notEnoughtMoneyPanel.SetActive(true);
+
     }
 
     public void ToNextStage(int value,int maxValue)
