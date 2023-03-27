@@ -15,7 +15,8 @@ public class BonusScoreManager : MonoBehaviour
     [SerializeField] private int m_bonusForGasHold;
     [SerializeField] private GameObject m_gasHoldUIPoints;
     [SerializeField] private TMPro.TMP_Text m_gasHoldUIPointsText;
-
+    public int stylePoitnts;
+    [SerializeField] private TMPro.TMP_Text m_stylePointsUI;
     [SerializeField] private int currentGasHoldValue;
 
     private void Update()
@@ -57,6 +58,8 @@ public class BonusScoreManager : MonoBehaviour
         {
             Debug.Log("PerfectShift");
             m_playerScore.score += m_bonusForPerfectShift;
+            stylePoitnts += m_bonusForPerfectShift;
+            m_stylePointsUI.text = "STYLE POINTS: "+stylePoitnts.ToString();
             UpdateUIPerfectShift();
            
         }

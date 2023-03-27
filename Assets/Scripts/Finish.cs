@@ -7,6 +7,7 @@ public class Finish : MonoBehaviour
 {
     public bool isRaceOver=false;
     public PlayableDirector finishTimeLine;
+    public RaceScoreCount raceScoreCount;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<CarRaceStats>().enabled==true&&isRaceOver==false)
@@ -14,7 +15,10 @@ public class Finish : MonoBehaviour
             finishTimeLine.Play();
             isRaceOver = true;
             other.gameObject.GetComponent<CarRaceStats>().hasWon = true;
+            raceScoreCount.CountScore();
+            raceScoreCount.UpdateUI();
         }
+       
      
     }
 }
